@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  usermanagementapi:
+    build:
+      context: ./UserManagementAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    networks:
+      - tasknetwork
+
+  taskcreationapi:
+    build:
+      context: ./TaskCreationAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    networks:
+      - tasknetwork
+
+  taskassignmentapi:
+    build:
+      context: ./TaskAssignmentAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5003:80"
+    networks:
+      - tasknetwork
+
+  taskdashboardapi:
+    build:
+      context: ./TaskDashboardAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5004:80"
+    networks:
+      - tasknetwork
+
+networks:
+  tasknetwork:
+    driver: bridge
